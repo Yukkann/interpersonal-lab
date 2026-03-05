@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人際實驗室 Interpersonal Laboratory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        labWhite: '#F8F9FA',
+                        labGrey: '#E9ECEF',
+                        sageGreen: '#8DA399',
+                        warmSand: '#D6AD94',
+                        charcoalBlue: '#343A40',
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'sans-serif'],
+                        serif: ['Noto Serif TC', 'serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1.2s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F9FA;
+            color: #343A40;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .bg-grid {
+            background-image: radial-gradient(#8DA399 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+            opacity: 0.1;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #343A40 0%, #8DA399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .step-connector {
+            position: absolute;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, #8DA399, transparent);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 py-6 px-8 flex justify-between items-center glass-card border-b border-labGrey/30">
+        <div class="text-charcoalBlue font-bold tracking-[0.2em] text-lg">人際實驗室</div>
+        <nav class="hidden md:flex space-x-8 text-sm tracking-widest uppercase">
+            <a href="#about" class="hover:text-sageGreen transition-colors">關於實驗</a>
+            <a href="#process" class="hover:text-sageGreen transition-colors">實驗流程</a>
+            <a href="#cta" class="px-4 py-2 bg-charcoalBlue text-white rounded-full hover:bg-sageGreen transition-all">立即報名</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="relative min-h-screen flex flex-col items-center justify-center pt-20 px-6 overflow-hidden">
+        <div class="absolute inset-0 bg-grid z-0"></div>
+        
+        <!-- Animated Background Elements -->
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-sageGreen/10 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-warmSand/10 rounded-full blur-3xl animate-float" style="animation-delay: -2s;"></div>
+
+        <div class="z-10 text-center max-w-4xl">
+            <span class="inline-block px-4 py-1 mb-6 text-xs tracking-[0.3em] text-sageGreen border border-sageGreen/30 rounded-full bg-white/50">INTERPERSONAL LABORATORY</span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-8 tracking-tight gradient-text leading-tight">
+                人際實驗室
+            </h1>
+            <p class="text-xl md:text-2xl font-serif text-charcoalBlue/80 mb-12 leading-relaxed tracking-wide">
+                脫下標籤與武裝，在關係的試管中，<br class="hidden md:block">調配最真誠的理解。
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+                <a href="#about" class="group relative px-8 py-4 bg-charcoalBlue text-white rounded-full overflow-hidden transition-all duration-300 hover:pr-12">
+                    <span class="relative z-10">開啟深度探險</span>
+                    <span class="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all">→</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </main>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 px-6 bg-white relative">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-col md:flex-row items-start gap-12">
+                <div class="md:w-1/3">
+                    <h2 class="text-3xl font-bold text-charcoalBlue mb-4">核心精神</h2>
+                    <div class="w-12 h-1 bg-warmSand mb-6"></div>
+                    <p class="text-sageGreen font-serif italic">"認識很多人，<br>卻很少被真正理解。"</p>
+                </div>
+                <div class="md:w-2/3">
+                    <p class="text-lg leading-loose font-serif text-charcoalBlue/90 space-y-6">
+                        在快速節奏與標籤化的現代社交中，社交媒體上的點讚取代了眼神的交會，客套的寒暄掩蓋了內心的真實。<br><br>
+                        「人際實驗室」是一個專為渴望深度連結者設計的場域。我們將人際互動視為一場精密的化學反應，透過循序漸進的實驗設計，結合「卡內基原則」中關於真誠欣賞與積極聆聽的核心精神，創造出一個安全、不評價且完全包容的空間。在這裡，沒有多餘的社交壓力，只有對「人」最純粹的探索。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progressive Features Section -->
+    <section id="process" class="py-32 px-6 bg-labGrey relative overflow-hidden">
+        <div class="max-w-6xl mx-auto relative">
+            <div class="text-center mb-24">
+                <h2 class="text-4xl font-bold mb-4">實驗四部曲</h2>
+                <p class="text-charcoalBlue/60 tracking-widest uppercase text-sm">Progressive Experimental Design</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+                <!-- Step 1 -->
+                <div class="glass-card p-8 rounded-3xl transform transition-transform hover:-translate-y-2 duration-500">
+                    <div class="w-12 h-12 rounded-2xl bg-sageGreen/10 flex items-center justify-center mb-6 text-sageGreen">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </div>
+                    <div class="text-xs font-bold text-sageGreen/60 mb-2">01 啟動反應</div>
+                    <h3 class="text-xl font-bold mb-4 text-charcoalBlue">輕鬆破冰：人際賓果</h3>
+                    <p class="text-sm font-serif leading-relaxed text-charcoalBlue/70">
+                        透過趣味且無壓力的互動設計，消融初見面的尷尬冰層。我們不問職稱與背景，只關注當下的感受。
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="glass-card p-8 rounded-3xl transform transition-transform hover:-translate-y-2 duration-500 md:mt-12">
+                    <div class="w-12 h-12 rounded-2xl bg-warmSand/10 flex items-center justify-center mb-6 text-warmSand">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </div>
+                    <div class="text-xs font-bold text-warmSand/60 mb-2">02 共振實驗</div>
+                    <h3 class="text-xl font-bold mb-4 text-charcoalBlue">合作體驗：趣味協作</h3>
+                    <p class="text-sm font-serif leading-relaxed text-charcoalBlue/70">
+                        設計微型合作任務，在共同達成目標的過程中觀察互動慣性。練習在實作中給予他人真誠的肯定。
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="glass-card p-8 rounded-3xl transform transition-transform hover:-translate-y-2 duration-500">
+                    <div class="w-12 h-12 rounded-2xl bg-sageGreen/10 flex items-center justify-center mb-6 text-sageGreen">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-width="2" stroke-linecap="round"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-width="2" stroke-linecap="round"></path></svg>
+                    </div>
+                    <div class="text-xs font-bold text-sageGreen/60 mb-2">03 光譜觀測</div>
+                    <h3 class="text-xl font-bold mb-4 text-charcoalBlue">差異對話：思想轉運站</h3>
+                    <p class="text-sm font-serif leading-relaxed text-charcoalBlue/70">
+                        學習在觀點分歧時保持好奇而非批判。運用卡內基原則，練習站在對方的角度看世界，看見背後的人性共性。
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="glass-card p-8 rounded-3xl transform transition-transform hover:-translate-y-2 duration-500 md:mt-12">
+                    <div class="w-12 h-12 rounded-2xl bg-warmSand/10 flex items-center justify-center mb-6 text-warmSand">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-width="2" stroke-linecap="round"></path></svg>
+                    </div>
+                    <div class="text-xs font-bold text-warmSand/60 mb-2">04 結晶生成</div>
+                    <h3 class="text-xl font-bold mb-4 text-charcoalBlue">深度分享：讚美卡</h3>
+                    <p class="text-sm font-serif leading-relaxed text-charcoalBlue/70">
+                        在先前安全感建立的基礎上，真誠給予讚美，同時帶走一份被理解的溫暖。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section id="cta" class="py-40 px-6 text-center relative bg-white">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold mb-10 text-charcoalBlue leading-tight">
+                當標籤褪去，<br>你想遇見什麼樣的自己？
+            </h2>
+            <p class="text-lg font-serif mb-12 text-charcoalBlue/70 leading-relaxed">
+                加入「人際實驗室」，開啟一場關於理解的深度探險。<br>
+                找回真誠連結的可能。
+            </p>
+            <a href="https://cool.ntu.edu.tw/" target="_blank" class="inline-block group px-12 py-5 bg-warmSand text-white rounded-full font-bold shadow-lg shadow-warmSand/20 hover:scale-105 transition-all duration-300">
+                立即報名+查看詳細資訊
+                <span class="inline-block transition-transform group-hover:translate-x-2 ml-2">→</span>
+            </a>
+            <div class="mt-12 grid grid-cols-3 gap-8 opacity-40">
+                <div class="text-center">
+                    <div class="text-2xl font-bold">100+</div>
+                    <div class="text-xs tracking-widest">理解時刻</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold">0</div>
+                    <div class="text-xs tracking-widest">社交壓力</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold">∞</div>
+                    <div class="text-xs tracking-widest">深度連結</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subtle Footer-style divider -->
+    <div class="mt-4 md:mt-0 space-x-6">
+        <a href="#" class="hover:text-sageGreen transition-colors">INSTAGRAM</a>
+        <a href="mailto:joliekao912@gmail.com" class="hover:text-sageGreen transition-colors">
+            CONTACT：高小姐 (joliekao912@gmail.com)
+        </a>
+    </div>
+
+    <script>
+        // Reveal on scroll
+        const sections = document.querySelectorAll('section');
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mouse move effect for background elements
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            document.querySelectorAll('.animate-float').forEach((el, index) => {
+                const speed = (index + 1) * 20;
+                el.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
